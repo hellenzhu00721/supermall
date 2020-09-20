@@ -3,10 +3,18 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+Vue.prototype.$bus = new Vue();
+
+import toast from "./components/common/toast";
+Vue.use(toast);
+
+import VueLazyLoad from "vue-lazyload";
+Vue.use(VueLazyLoad);
+
 Vue.config.productionTip = false;
 
 new Vue({
+  render: h => h(App),
   router,
-  store,
-  render: h => h(App)
+  store
 }).$mount("#app");
